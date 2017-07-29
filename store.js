@@ -49,8 +49,7 @@ Store.prototype = {
   },
 
   getIndexOfBook: function(book){
-   return _.indexOf(this.inventory, book)
-    
+   return (_.indexOf(this.inventory, book));
   },
 
   listBookDetails: function(book){
@@ -63,6 +62,22 @@ Store.prototype = {
     }.bind(this));
   },
 
+  sellBook: function(book){
+      _.remove(this.inventory, book);
+      this.balance -= book.price;
+    },
+
+    getInventoryValue: function(){
+       return (_.sumBy(this.inventory, 'price'));
+    },
+
+    // getFinancials: function(){
+    //   return "Current Store Balance: £" + this.balance" - " + store.getInventorySize + " book/s in stock | stock value at £" + store.getInventoryValue + "Have a nice day! :-)";
+    // },
+
+    sortedByGenre: function(genre){
+      return (_.filter(this.inventory, 'genre'));
+    }
 
 
 

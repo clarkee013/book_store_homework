@@ -51,6 +51,7 @@ it('should be able to clear inventory', function(){
   assert.strictEqual(store.getInventorySize(), 0);
 })
 
+
 it('should be able to find book by title', function(){
   store.addBookToInventory(book1);
   assert.deepEqual(store.findBookByTitle("Dark Disciple").title, "Dark Disciple");
@@ -69,12 +70,35 @@ it('should be able to list book details', function(){
 it('should be able to list inventory', function(){
   store.addBookToInventory(book1);
   store.addBookToInventory(book2);
-  assert.deepEqual(store.listInventory(), ["Dark Disciple by Christie Golden, price is: £6.99, 313 pages", "Tarkin by James Luceno, price is: £5.99, 274 pages" ])
+  assert.deepEqual(store.listInventory(), ["Dark Disciple by Christie Golden, price is: £6.99, 313 pages", "Tarkin by James Luceno, price is: £5.99, 274 pages"])
 })
 
-xit('should be able to sell book and store balance changes', function(){
-  
+it('should be able to sell a book', function(){
+  store.addBookToInventory(book1);
+  store.sellBook(book1);
+  assert.strictEqual(store.getBalance(), 93.01);
+  assert.strictEqual(store.getInventorySize(), 0);
 })
+
+it('should be able to get inventory value', function(){
+  store.addBookToInventory(book1);
+  assert.strictEqual(store.getInventoryValue(), 6.99);
+})
+
+xit('should be able to report financials', function(){
+  store.addBookToInventory(book1);
+  assert.strictEqual(store.getFinancials, "Current Store Balance: £100 - 1 book in stock/s | stock value at £6.99");
+})
+
+it('should be able to return all books by genre', function(){
+  store.addBookToInventory(book1);
+  assert.deepEqual(store.sortedByGenre("Sci-Fi"), [book1]);
+})
+
+
+
+
+
 
 
 }) // END END END END
