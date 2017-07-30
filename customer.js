@@ -66,7 +66,30 @@ Customer.prototype = {
        return (_.sumBy(this.collection, 'price'));
     },
 
+    getCollectionValueByGenre: function(selection){
+     filteredCollection = (_.filter(this.collection, {'genre' : selection}));
+     // return _.sumBy(filteredCollection, 'price');
+     return this.getCollectionValue(filteredCollection);
+    },
 
+    viewLongestBook: function(){
+      sortedCollection = (_.sortBy(this.collection, ['pageCount']));
+      sortedCollection2 = sortedCollection.reverse();
+      return sortedCollection2[0];
+    },
+
+    getIndexOfBook: function(book){
+     return (_.indexOf(this.collection, book));
+    },
+
+    sortBooksAscendingPrice: function(){
+      ascendingPrice = (_.sortBy(this.collection, ['price']));
+      return ascendingPrice;
+    },
+
+    sortBooksDescendingPrice: function(){
+      return ascendingPrice.reverse();
+    }
 
 
 

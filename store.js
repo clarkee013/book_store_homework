@@ -72,7 +72,7 @@ Store.prototype = {
     },
 
     // getFinancials: function(){
-    //   return "Current Store Balance: £" + this.balance" - " + store.getInventorySize + " book/s in stock | stock value at £" + store.getInventoryValue + "Have a nice day! :-)";
+    //   return "Current Store Balance: £" + this.balance" - " + this.getInventorySize() + " book/s in stock | stock value at £" + this.getInventoryValue() + "Have a nice day! :-)";
     // },
 
     sortedByGenre: function(genre){

@@ -87,13 +87,14 @@ it('should be able to get inventory value', function(){
 
 xit('should be able to report financials', function(){
   store.addBookToInventory(book1);
-  assert.strictEqual(store.getFinancials, "Current Store Balance: £100 - 1 book in stock/s | stock value at £6.99");
+  assert.strictEqual(store.getFinancials, ["Current Store Balance: £100 - 1 book in stock/s | stock value at £6.99"]);
 })
 
 it('should be able to return all books by genre', function(){
   store.addBookToInventory(book1);
   assert.deepEqual(store.sortedByGenre("Sci-Fi"), [book1]);
 })
+
 
 
 
