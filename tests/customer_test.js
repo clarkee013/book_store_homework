@@ -8,6 +8,7 @@ describe('Customer', function(){
   var book1 = new Book("Christie Golden", "Dark Disciple", "Sci-Fi", 6.99, 313);
   var book2 = new Book("James Luceno", "Tarkin", "Sci-Fi", 5.99, 274);
 
+
 beforeEach(function(){
   customer = new Customer("David", "Glasgow", 20);
 })
@@ -80,7 +81,7 @@ it('should be able to get inventory value by genre', function(){
   assert.strictEqual(customer.getCollectionSize(), 1);
 })
 
-it('should be able to sort collection by longest book', function(){
+it('should be able to return longest book in collection', function(){
   customer.addBookToCollection(book1);
   customer.addBookToCollection(book2);
   assert.strictEqual(customer.viewLongestBook(), book1);
@@ -102,6 +103,11 @@ it('should be able to sort books descending by price', function(){
   customer.addBookToCollection(book1);
   customer.addBookToCollection(book2);
   assert.strictEqual(customer.getIndexOfBook(book1), 0);
+})
+
+it('should be able to compare to another persons collection', function(){
+  customer.addBookToCollection(book1);
+  assert.strictEqual(customer.compareCollection(customer.otherCollection), true);
 })
 
 

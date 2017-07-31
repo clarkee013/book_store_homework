@@ -71,9 +71,13 @@ Store.prototype = {
        return (_.sumBy(this.inventory, 'price'));
     },
 
-    // getFinancials: function(){
-    //   return "Current Store Balance: £" + this.balance" - " + this.getInventorySize() + " book/s in stock | stock value at £" + this.getInventoryValue() + "Have a nice day! :-)";
-    // },
+    getTotalStoreBalance: function(){
+      return (this.balance + this.getInventoryValue());
+    },
+
+    getFinancials: function(){
+      return "Current Store Balance: £" + this.balance + " - " + this.getInventorySize() + " book/s in stock | stock value at £" + this.getInventoryValue() + " | Giving a total of: £" + this.getTotalStoreBalance();
+    },
 
     sortedByGenre: function(genre){
       return (_.filter(this.inventory, 'genre'));

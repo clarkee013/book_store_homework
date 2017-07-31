@@ -85,9 +85,16 @@ it('should be able to get inventory value', function(){
   assert.strictEqual(store.getInventoryValue(), 6.99);
 })
 
-xit('should be able to report financials', function(){
+it('should be able to get total store total balance', function(){
   store.addBookToInventory(book1);
-  assert.strictEqual(store.getFinancials, ["Current Store Balance: £100 - 1 book in stock/s | stock value at £6.99"]);
+  store.addBookToInventory(book2);
+  assert.strictEqual(store.getTotalStoreBalance(), 112.98);
+})
+
+it('should be able to report financials', function(){
+  store.addBookToInventory(book1);
+  store.addBookToInventory(book2);
+  assert.strictEqual(store.getFinancials(), "Current Store Balance: £100 - 2 book/s in stock | stock value at £12.98 | Giving a total of: £112.98");
 })
 
 it('should be able to return all books by genre', function(){

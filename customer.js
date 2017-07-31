@@ -5,6 +5,7 @@ var Customer = function(name, city, wallet) {
   this.city = city;
   this.wallet = wallet;
   this.collection = [];
+  this.otherCollection = 2.99;
 }
 
 Customer.prototype = {
@@ -89,6 +90,14 @@ Customer.prototype = {
 
     sortBooksDescendingPrice: function(){
       return ascendingPrice.reverse();
+    },
+
+    compareCollection: function(){
+      if (this.getCollectionValue() >= this.otherCollection) {
+        return true;
+      } else {
+      return false;
+    };
     }
 
 
